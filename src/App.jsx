@@ -7,6 +7,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import UserPage from "./components/Admin/UserPage";
+import UserProfile from "./components/Admin/UserProfile";
 import FormMain from "./components/Form/FormMain";
 import Header from "./components/layout/Header";
 import RegisterMain from "./components/Register/RegisterMain";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/admin" element={<PrivateRoutes />}>
           <Route path="" element={<Header />}>
             <Route index element={<UserPage />} />
+            <Route path="profile" element={<UserProfile />} />
           </Route>
         </Route>
       </Routes>

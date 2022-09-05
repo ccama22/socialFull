@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import NumberFormat from "react-number-format";
 
 const Register = () => {
   const [stateForm, setStateForm] = useState(false);
   const [dataUser, setDataUser] = useState([]);
-
+  const [dataCel, setDataCel] = useState("");
   useEffect(() => {
     getDataUsers();
   }, []);
@@ -17,6 +18,10 @@ const Register = () => {
       console.log("ss");
     }
   }
+  const phoneNumber = (data) => {
+    console.log("data number", data);
+    setDataCel(data.value);
+  };
 
   return (
     <div className="bg-white px-10 py-20 rounded-3xl border-2 border-gray-100">
@@ -28,6 +33,8 @@ const Register = () => {
         initialValues={{
           name: "",
           email: "",
+          age: "",
+          password: "",
         }}
         validate={(valores) => {
           let errores = {};
@@ -52,6 +59,8 @@ const Register = () => {
           console.log("data users", valores);
           const newDataUser = {
             ...valores,
+            photoUser: "",
+            celPhone: dataCel,
           };
           const dataList = [...dataUser, newDataUser];
           setDataUser(dataList);
@@ -70,7 +79,7 @@ const Register = () => {
           handleChange,
           handleBlur,
         }) => (
-          <Form>
+          <Form className="container-FormData">
             <div className="mt-8">
               <div>
                 <label className="text-lg font-medium" htmlFor="name">
@@ -106,6 +115,46 @@ const Register = () => {
                   <div className="error">{errors.email}</div>
                 )}
               </div>
+              <div style={{ marginTop: "15px" }}>
+                <label className="text-lg font-medium" htmlFor="celPhone">
+                  Numero de Celular
+                </label>
+                <NumberFormat
+                  id="celPhone"
+                  className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+                  name="celPhone"
+                  format="+51 ###-###-###"
+                  allowEmptyFormatting
+                  onValueChange={(vals) =>
+                    phoneNumber({ value: vals.formattedValue })
+                  }
+                  // mask="_"
+                />
+              </div>
+              <div style={{ marginTop: "15px" }}>
+                <label className="text-lg font-medium" htmlFor="age">
+                  Edad
+                </label>
+                <Field
+                  id="age"
+                  className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+                  placeholder="Ingresa tu edad"
+                  name="age"
+                />
+              </div>
+              <div style={{ marginTop: "15px" }}>
+                <label className="text-lg font-medium" htmlFor="password">
+                  Contraseña
+                </label>
+                <Field
+                  id="password"
+                  className="w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent"
+                  placeholder="Ingrese tu password"
+                  type="password"
+                  name="password"
+                />
+              </div>
+
               <div className="mt-8">
                 <Link to="/">
                   <button className="font-medium text-base text-violet-500">

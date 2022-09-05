@@ -7,6 +7,7 @@ import { data } from "autoprefixer";
 export default function Forms() {
   const [stateLogin, setStateLogin] = useState(false);
   const [authState, setauthState] = useState();
+  const [dataUserSeccion, setDataUserSeccion] = useState({});
   const navigate = useNavigate();
 
   return (
@@ -35,11 +36,11 @@ export default function Forms() {
           return errores;
         }}
         onSubmit={(valores, { resetForm }) => {
-          // const newDataUser = {
-          //   ...valores,
-          // };
-          // const dataList = { ...dataUserSeccion, newDataUser };
-          // setDataUserSeccion(dataList);
+          const newDataUser = {
+            ...valores,
+          };
+          const dataList = { ...dataUserSeccion, newDataUser };
+          setDataUserSeccion(dataList);
           // localStorage.setItem("data_user_seccion", JSON.stringify(dataList));
           console.log("valore", valores.email);
           const dataUserRegister = JSON.parse(
@@ -58,6 +59,10 @@ export default function Forms() {
               localStorage.setItem(
                 "isAuthenticated",
                 JSON.stringify(isAuthenticated)
+              );
+              localStorage.setItem(
+                "data_user_seccion",
+                JSON.stringify(dataList)
               );
               navigate("/admin");
               // <Navigate to="/admin" />;

@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  outline: none;
+}
+
 body {
   margin: 0;
   background: #f1f1f1;
@@ -20,14 +28,20 @@ code {
 .container-header{
   background-color: #f7f7f7;
   display: flex;
-  gap: 5px;
-  justify-content: space-around;
+
+  justify-content: space-evenly;
   padding-top: 20px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   align-items: center;
 
 }
 
+.container-logoInfo{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
 .continer-content{
   font-size: 30px;
   font-weight: 300px;
@@ -51,4 +65,83 @@ code {
   border-color: #d03e5b;
   border-width: 2px;
   
+}
+.container-profile{
+  /* width: 400px;
+  float: right; */
+  display: flex;
+  align-items: center;
+  background-color: #fbf8f8;
+  margin-left: 700px;
+}
+.container-profile img{
+  background: red;
+  height: 60px;
+  width: 60px;
+  float: right;
+  border-radius: 50%;
+  margin: 10px;
+}
+.container-profile .name{
+  float: right;
+  height: 60px;
+  line-height: 60px;
+  color: black;
+  padding: 0 10px;
+}
+.container-FormData{
+  overflow: scroll;
+  max-height: 451px;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.container-viewProfile{
+  background-color: red;
+  color: #f7f7f7;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 10%;
+}
+.container-dat{
+  display: flex;
+  background-color: rgb(255, 254, 255);
+  min-height: 100vh;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+.container-dataProfile{
+  /* background-color: rgb(255, 220, 253); */
+  display:inline-flex;
+  align-items: center;
+  justify-content:center;
+  flex-direction: row;
+  width:100vh;
+  height: 30vh;
+  margin-top: 200px;
+}
+.container-photo{
+  display: flex;
+  gap:15px;
+  flex-direction: column;
+}
+.container-data{
+  display: flex;
+  flex-direction: column;
+  gap:20px;
+  /* background-color: aqua; */
+  width:32vh;
+}
+.continer-dataFinal{
+  display:flex;
+  flex-direction: row;
+  /* background-color: aquamarine; */
+  align-items:center;
+  justify-content: center;
+  gap: 100px;
+  padding-left: 150px;
+  padding-right: 150px;
+
 }
